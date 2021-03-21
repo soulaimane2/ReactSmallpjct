@@ -29,6 +29,7 @@ class App extends Component{
       );
     return (
       <div className="App">
+        <h1> Monsteeeer ! </h1>
         <SearchBar placeholder="Search Monsters" handleChange={
           e => this.setState(
             {searchField: e.target.value},()=>{

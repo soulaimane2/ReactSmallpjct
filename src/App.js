@@ -7,8 +7,8 @@ class App extends Component{
     super();
 
     this.state = {
-      question : "did we ?",
-      Bands:[]
+      Bands:[],
+      searchField:""
     }
   }
 
@@ -20,9 +20,22 @@ class App extends Component{
   }
 
   render(){
+    // the deconstractor should have the same names as the state keys
+    const {Bands,searchField} = this.state;
+    // we filter the monsters according to what we searched for
+    const filtredMonst = Bands.filter(monster => 
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+      );
     return (
       <div className="App">
-              <CardList monsters={this.state.Bands}/>
+        <input 
+          type="search" 
+          placeholder="Search your monster" 
+          onChange={e => this.setState(
+            {searchField: e.target.value},()=>{
+              
+          })}/>
+        <CardList monsters={filtredMonst}/>
       </div>
     );
   }
